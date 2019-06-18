@@ -35,7 +35,6 @@ namespace exploderapi.Controllers
         {
           result = result + '-';
         }
-
       }
       return result;
     }

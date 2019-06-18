@@ -17,6 +17,5 @@ namespace exploderapi.Controllers
     {
       return string.Join("", s.Select(c => new String(c, int.Parse(c.ToString()))));
     }
-
   }
 }
