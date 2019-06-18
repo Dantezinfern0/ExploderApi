@@ -6,40 +6,40 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace exploderapi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+  [Route("api/[controller]")]
+  [ApiController]
+  public class MumblingController : ControllerBase
+  {
+    // GET api/values
+    [HttpGet("{s}")]
+    public ActionResult<string> GetMumbledWords(string s)
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+      string result = "";
+      char[] stringArray;
+      stringArray = s.ToCharArray();
+      for (int i = 0; i < stringArray.Length; i++)
+      {
+        char.ToLower(stringArray[i]);
+        for (int j = 0; j <= i; j++)
         {
-            return new string[] { "value1", "value2" };
+          if (j == 0)
+          {
+            result = result + char.ToUpper(stringArray[i]);
+          }
+          else
+          {
+            result = result + char.ToLower(stringArray[i]);
+          }
+        }
+        if (i != stringArray.Length - 1)
+        {
+          result = result + '-';
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      }
+      return result;
     }
+  }
+
 }
+
