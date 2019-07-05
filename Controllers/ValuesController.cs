@@ -17,8 +17,10 @@ namespace exploderapi.Controllers
       string result = "";
       char[] stringArray;
       stringArray = s.ToCharArray();
+      string abacaba = "";
       for (int i = 0; i < stringArray.Length; i++)
       {
+        abacaba += stringArray[i] + abacaba;
         char.ToLower(stringArray[i]);
         for (int j = 0; j <= i; j++)
         {
@@ -36,7 +38,7 @@ namespace exploderapi.Controllers
           result = result + '-';
         }
       }
-      return result;
+      return abacaba;
     }
   }
 
